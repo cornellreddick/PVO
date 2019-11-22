@@ -13,6 +13,16 @@ namespace PVO
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+
+            //custom route single route
+//            routes.MapRoute(
+//                "MoviesByReleaseDate",
+//                "movie/released/{year}/{month}",
+//                new {controller = "Movie", action = "ByReleaseDate"},
+//                new { year = @"\d{4}", month = @"\d{2}"}
+//                );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
