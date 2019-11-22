@@ -13,6 +13,7 @@ namespace PVO
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Attribute route allows you to create the custom route in the controller. 
             routes.MapMvcAttributeRoutes();
 
             //custom route single route

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PVO.ViewModels;
 
 namespace PVO.Controllers
 {
@@ -13,7 +14,24 @@ namespace PVO.Controllers
         public ActionResult Random()
         {
             var movie = new Movie() { Name = "Shrek!" };
-            return View(movie);
+
+            var customers = new List<Customer>
+            {
+                new Customer { Name = "Cornell"},
+                new Customer { Name = "Tasha"},
+                new Customer { Name = "Sam"},
+                new Customer { Name = "Reese"},
+
+            };
+
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Customers = customers
+
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult Edit(int Id)
@@ -34,7 +52,9 @@ namespace PVO.Controllers
             return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
         }
 
-        public ActionResult ByReleaseDate(int year, int month)
+        //Attribute Route
+        [Route("movie/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]
+        public ActionResult ByReleaseYear(int year, int month)
         {
 
             return Content(year + "/" + month);
