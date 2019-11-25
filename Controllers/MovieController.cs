@@ -15,19 +15,20 @@ namespace PVO.Controllers
         {
             var movie = new Movie() { Name = "Shrek!" };
 
-            var customers = new List<Customer>
-            {
-                new Customer { Name = "Cornell"},
-                new Customer { Name = "Tasha"},
-                new Customer { Name = "Sam"},
-                new Customer { Name = "Reese"},
-
-            };
+//            var movie = new List<Movie>
+//            {
+//                new Movie { Name = "Cornell"},
+//                new Movie { Name = "Tasha"},
+//                new Movie { Name = "Sam"},
+//                new Movie { Name = "Reese"},
+//
+//            };
 
             var viewModel = new RandomMovieViewModel
             {
                 Movie = movie,
-                Customers = customers
+
+                //Customers = customers
 
             };
 

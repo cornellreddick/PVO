@@ -4,7 +4,26 @@
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@* *@
+@* @{ *@
+@*     var className = Model.Cus.Count > 0 ? "popular" : null; *@
+@* } *@
 
 <h2>@Model.Movie.Name</h2>
-@Model.Customers
+
+@* @if (Model.Movie.Count == 0) *@
+@* { *@
+@*     <p>This movie hasn't been rented yet! </p> *@
+@* } *@
+@* else *@
+@* { *@
+@*     <ul> *@
+@*         @foreach (var customer in Model.Movie) *@
+@*         { *@
+@*             <li>@customer.Name</li> *@
+@*      *@
+@*         } *@
+@*     </ul>   *@
+@* } *@
+@* *@
 
