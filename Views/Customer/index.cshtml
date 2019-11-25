@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PVO.Models.Customer>
+@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+
+
+@if (!Model.Any())
+{
+    <p>There are not any customers.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Customer</th>
+        </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @foreach (var customer in Model)
+                    {
+                        @Html.ActionLink(customer.Name, "Details", "Customer", new { id = customer.Id }, null)
+                    }
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+}
+

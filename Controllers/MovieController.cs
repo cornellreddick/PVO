@@ -21,7 +21,8 @@ namespace PVO.Controllers
         public ActionResult Details( int id)
         {
             var movie = GetMovies().SingleOrDefault(m => m.Id == id);
-        };
+            return View(movie);
+        }
 
         private IEnumerable<Movie> GetMovies()
         {

@@ -1,4 +1,4 @@
-﻿@model PVO.ViewModels.RandomMovieViewModel
+﻿@model IEnumerable<PVO.Models.Movie>
 
 @{
     ViewBag.Title = "Random";
@@ -9,7 +9,7 @@
 @*     var className = Model.Cus.Count > 0 ? "popular" : null; *@
 @* } *@
 
-<h2>@Model.Movie.Name</h2>
+@* <h2>@Model.Movie.Name</h2> *@
 
 @* @if (Model.Movie.Count == 0) *@
 @* { *@
