@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using PVO.Models;
-using PVO.ViewModels;
+
 
 namespace PVO.Controllers
 {
     public class CustomerController : Controller
     {
         // GET: Customer
-        public ActionResult Index()
+        public ViewResult Index()
         {
 
-            var customer = GetCustomers();
+            var customers = GetCustomers();
             {
-                return View(customer);
+                return View(customers);
             };
             
         }
@@ -39,8 +37,8 @@ namespace PVO.Controllers
         {
             return new List<Customer>
             {
-                new Customer {Name = "Cornell Reddick"},
-                new Customer {Name = "Maurice Reddick"}
+                new Customer {Id = 1, Name = "Cornell Reddick"},
+                new Customer {Id = 2, Name = "Maurice Reddick"}
 
             };
         }

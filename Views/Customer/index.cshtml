@@ -21,14 +21,16 @@ else
 
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    @foreach (var customer in Model)
-                    {
+            
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>
                         @Html.ActionLink(customer.Name, "Details", "Customer", new { id = customer.Id }, null)
-                    }
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            }
+             
         </tbody>
 
     </table>

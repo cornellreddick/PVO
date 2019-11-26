@@ -1,29 +1,23 @@
-﻿@model IEnumerable<PVO.Models.Movie>
-
+﻿
 @{
-    ViewBag.Title = "Random";
+    ViewBag.Title = "index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@* *@
-@* @{ *@
-@*     var className = Model.Cus.Count > 0 ? "popular" : null; *@
-@* } *@
 
-@* <h2>@Model.Movie.Name</h2> *@
+<h2>Movies</h2>
 
-@* @if (Model.Movie.Count == 0) *@
-@* { *@
-@*     <p>This movie hasn't been rented yet! </p> *@
-@* } *@
-@* else *@
-@* { *@
-@*     <ul> *@
-@*         @foreach (var customer in Model.Movie) *@
-@*         { *@
-@*             <li>@customer.Name</li> *@
-@*      *@
-@*         } *@
-@*     </ul>   *@
-@* } *@
-@* *@
-
+<table>
+    <thead class="table table-bordered table-hover">
+        <tr>
+            <th>Movie</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
