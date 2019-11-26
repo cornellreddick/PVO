@@ -18,12 +18,17 @@ namespace PVO.Controllers
             return View(movie);
         }
 
-//        public ActionResult Details( int id)
-//        {
-//            var movie = GetMovies();
-//            return View(movie);
-//        }
+       
+        public ActionResult Details(int id)
+        {
+            var customer = GetMovies().SingleOrDefault(m => m.Id == id);
 
+            if (customer == null)
+                return HttpNotFound();
+
+
+            return View(customer);
+        }
         private IEnumerable<Movie> GetMovies()
         {
             return new List<Movie>
