@@ -1,4 +1,5 @@
-﻿using PVO.Models;
+﻿using System.Data.Entity;
+using PVO.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,21 @@ namespace PVO.Controllers
 {
     public class MovieController : Controller
     {
-        // GET: Movie/Ramdom
+        private ApplicationDbContext _context;
+
+        public MovieController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         public ViewResult Index()
         {
-            var movie = GetMovies();
+            var movie = _context.Movies.Include(m => m.Genre).ToList();
 
             return View(movie);
         }
@@ -21,40 +33,40 @@ namespace PVO.Controllers
        
         public ActionResult Details(int id)
         {
-            var customer = GetMovies().SingleOrDefault(m => m.Id == id);
+            var movies = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
 
-            if (customer == null)
+            if (movies == null)
                 return HttpNotFound();
 
 
-            return View(customer);
+            return View(movies);
         }
-        private IEnumerable<Movie> GetMovies()
-        {
-            return new List<Movie>
-            {
-                new Movie {Id = 1, Name = "Queen & Slim"},
-                new Movie {Id = 2, Name = "Midway"},
-                new Movie {Id = 3, Name = "Frozen II"}
-            };
-        }
+//        private IEnumerable<Movie> GetMovies()
+//        {
+//            return new List<Movie>
+//            {
+//                new Movie {Id = 1, Name = "Queen & Slim"},
+//                new Movie {Id = 2, Name = "Midway"},
+//                new Movie {Id = 3, Name = "Frozen II"}
+//            };
+//        }
 
-        public ActionResult Random()
-        {
-            var movie = new Movie() {Name = "Shrek!"};
-            var customers = new List<Customer>
-            {
-                new Customer {Name = "Customer 1"},
-                new Customer {Name = "Customer 2"}
-            };
-
-            var viewModel = new RandomMovieViewModel
-            {
-                Movie = movie,
-                Customer = customers
-            };
-
-            return View(viewModel);
+//        public ActionResult Random()
+//        {
+//            var movie = new Movie() {Name = "Shrek!"};
+//            var customers = new List<Customer>
+//            {
+//                new Customer {Name = "Customer 1"},
+//                new Customer {Name = "Customer 2"}
+//            };
+//
+//            var viewModel = new RandomMovieViewModel
+//            {
+//                Movie = movie,
+//                Customer = customers
+//            };
+//
+//            return View(viewModel);
 
 
             //Example methods 
