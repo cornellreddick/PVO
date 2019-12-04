@@ -41,32 +41,23 @@ namespace PVO.Controllers
 
             return View(movies);
         }
-//        private IEnumerable<Movie> GetMovies()
-//        {
-//            return new List<Movie>
-//            {
-//                new Movie {Id = 1, Name = "Queen & Slim"},
-//                new Movie {Id = 2, Name = "Midway"},
-//                new Movie {Id = 3, Name = "Frozen II"}
-//            };
-//        }
 
-//        public ActionResult Random()
-//        {
-//            var movie = new Movie() {Name = "Shrek!"};
-//            var customers = new List<Customer>
-//            {
-//                new Customer {Name = "Customer 1"},
-//                new Customer {Name = "Customer 2"}
-//            };
-//
-//            var viewModel = new RandomMovieViewModel
-//            {
-//                Movie = movie,
-//                Customer = customers
-//            };
-//
-//            return View(viewModel);
+        public ActionResult Random()
+        {
+            var movie = new Movie() {Name = "Shrek!"};
+            var customers = new List<Customer>
+            {
+                new Customer {Name = "Customer 1"},
+                new Customer {Name = "Customer 2"}
+            };
+
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Customer = customers
+            };
+
+            return View(viewModel);
 
 
             //Example methods 
