@@ -42,6 +42,11 @@ namespace PVO.Controllers
             return View(customer);
         }
 
+        public ActionResult New()
+        {
+            return View();
+        }
+
 
 //        //Created a list of Customers. 
 //        private IEnumerable<Customer> GetCustomers()
