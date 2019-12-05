@@ -42,6 +42,19 @@ namespace PVO.Controllers
             return View(movies);
         }
 
+        public ActionResult New(Movie movie)
+        {
+
+            var genre = _context.Genres.ToList();
+
+            var viewModel = new MovieFormViewModel()
+            {
+                Genres = genre
+            };
+            
+            return View("MovieForm", viewModel);
+        }
+
         public ActionResult Random()
         {
             var movie = new Movie() {Name = "Shrek!"};

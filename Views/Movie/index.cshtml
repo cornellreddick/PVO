@@ -1,10 +1,12 @@
-﻿@model IEnumerable<PVO.Models.Movie>
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<PVO.Models.Movie>
 @{
     ViewBag.Title = "index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Movies</h2>
+@Html.ActionLink("New Movie",  "New", "Movie", null, new {@class="btn btn-primary"})
 <table class="table table-bordered table-hover">
     <thead>
     <tr>
