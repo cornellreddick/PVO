@@ -30,7 +30,35 @@ namespace PVO.Controllers
             return View(movie);
         }
 
-       
+        public ViewResult New()
+        {
+
+            var genre = _context.Genres.ToList();
+
+            var viewModel = new MovieFormViewModel
+            {
+                Genres = genre
+            };
+            
+            return View("MovieForm", viewModel);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
+
+            if (movie == null)
+                return HttpNotFound();
+
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                Genres = _context.Genres.ToList()
+            };
+
+            return View("MovieForm", viewModel);
+        }
+
         public ActionResult Details(int id)
         {
             var movies = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
@@ -42,18 +70,7 @@ namespace PVO.Controllers
             return View(movies);
         }
 
-        public ActionResult New(Movie movie)
-        {
 
-            var genre = _context.Genres.ToList();
-
-            var viewModel = new MovieFormViewModel()
-            {
-                Genres = genre
-            };
-            
-            return View("MovieForm", viewModel);
-        }
 
         public ActionResult Random()
         {
@@ -72,35 +89,29 @@ namespace PVO.Controllers
 
             return View(viewModel);
 
-
-            //Example methods 
-            //        public ActionResult Edit(int Id)
-            //        {
-            //            return Content("Id=" + Id);
-            //        }
-            //
-            //        //Movies
-            //        public ActionResult Index(int? pageIndex, string sortBy)
-            //        {
-            //            if (pageIndex.HasValue)
-            //                pageIndex = 1;
-            //            
-            //
-            //            if (String.IsNullOrWhiteSpace(sortBy))
-            //                sortBy = "Name";
-            //
-            //            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
-            //        }
-            //
-            //        //Attribute Route
-            //        [Route("movie/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]
-            //        public ActionResult ByReleaseYear(int year, int month)
-            //        {
-            //
-            //            return Content(year + "/" + month);
-            //        }
+        }
 
 
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            if (movie.Id == 0)
+            {
+                movie.DateAdded = DateTime.Now;
+                _context.Movies.Add(movie);
+            }
+            else
+            {
+                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
+                movieInDb.Name = movie.Name;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.GenreId = movie.GenreId;
+                movieInDb.NumberInStock = movie.NumberInStock;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Movie");
         }
     }
 }
