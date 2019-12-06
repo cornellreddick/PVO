@@ -32,7 +32,6 @@ namespace PVO.Controllers
 
         public ViewResult New()
         {
-
             var genre = _context.Genres.ToList();
 
             var viewModel = new MovieFormViewModel
@@ -50,9 +49,8 @@ namespace PVO.Controllers
             if (movie == null)
                 return HttpNotFound();
 
-            var viewModel = new MovieFormViewModel
-            {
-                Movie = movie,
+            var viewModel = new MovieFormViewModel(movie)
+            { 
                 Genres = _context.Genres.ToList()
             };
 
@@ -93,8 +91,18 @@ namespace PVO.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewmodel = new MovieFormViewModel(movie)
+                {
+                    Genres = _context.Genres.ToList()
+                };
+                return View("MovieForm", viewmodel);
+            }
+
             if (movie.Id == 0)
             {
                 movie.DateAdded = DateTime.Now;
