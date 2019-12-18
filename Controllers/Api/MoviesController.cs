@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using PVO.Dtos;
 using PVO.Models;
-using  AutoMapper;
+using AutoMapper;
 
 namespace PVO.Controllers.Api
 {
@@ -20,7 +20,7 @@ namespace PVO.Controllers.Api
         }
 
         // Get /api/movies
-        public IEnumerable<MovieDto> GetMovie()
+        public IEnumerable<MovieDto> GetMovies()
         {
             return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
         }
@@ -48,16 +48,14 @@ namespace PVO.Controllers.Api
             _context.SaveChanges();
 
             movieDto.Id = movie.Id;
-
             return Created(new Uri(Request.RequestUri + "/" + movie.Id), movieDto);
-
         }
 
         // PUT /api/movies/1
         [HttpPut]
         public IHttpActionResult UpdateMovie(int id, MovieDto movieDto)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest();
 
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);

@@ -20,12 +20,11 @@ namespace PVO.Controllers.Api
         }
 
         // Get /api/customers
-        public IHttpActionResult GetCustomers()
+        public IEnumerable<CustomerDto> GetCustomers()
         {
-            var customerDtos = _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
-
-            return Ok();
+            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
         }
+
 
         // GET /api/customers/1
         public IHttpActionResult GetCustomer(int id)
