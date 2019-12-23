@@ -25,9 +25,9 @@ namespace PVO.Controllers
 
         public ViewResult Index()
         {
-            var movie = _context.Movies.Include(m => m.Genre).ToList();
+            //var movie = _context.Movies.Include(m => m.Genre).ToList();
 
-            return View(movie);
+            return View();
         }
 
         public ViewResult New()
