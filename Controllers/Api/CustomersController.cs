@@ -7,6 +7,7 @@ using System.Web.Http;
 using AutoMapper;
 using PVO.Dtos;
 using PVO.Models;
+using System.Data.Entity;
 
 namespace PVO.Controllers.Api
 {
@@ -20,9 +21,15 @@ namespace PVO.Controllers.Api
         }
 
         // Get /api/customers
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IHttpActionResult GetCustomers()
         {
-            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            var customerDtos = _context.Customers
+                .Include(c => c.MembershipType)
+                .ToList()
+                .Select(Mapper.Map<Customer, CustomerDto>);
+
+            return Ok(customerDtos);
+
         }
 
 
