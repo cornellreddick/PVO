@@ -25,11 +25,13 @@ namespace PVO.Controllers
 
         public ViewResult Index()
         {
-            //var movie = _context.Movies.Include(m => m.Genre).ToList();
+            if (User.IsInRole(RoleName.CanManageMovies))
+                return View("List");
 
-            return View();
+            return View("ReadOnlyList");
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ViewResult New()
         {
             var genre = _context.Genres.ToList();

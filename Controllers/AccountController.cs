@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PVO.Models;
@@ -155,6 +156,13 @@ namespace PVO.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+//                    //Temp Code displaying how to set up different access for Roles. 
+//                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+//                    var roleManger = new RoleManager<IdentityRole>(roleStore);
+//                    await roleManger.CreateAsync(new IdentityRole("CanManageMovies"));
+//                    await UserManager.AddToRolesAsync(user.Id, "CanManageMovies");
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
