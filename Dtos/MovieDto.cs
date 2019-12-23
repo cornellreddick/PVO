@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Web;
 using PVO.Models;
 
@@ -18,6 +19,9 @@ namespace PVO.Dtos
 
         [Required]
         public byte GenreId { get; set; }
+
+        public GenreTypeDto Genre { get; set; }
+
         public DateTime ReleaseDate { get; set; }
 
         public DateTime DateAdded { get; set; }

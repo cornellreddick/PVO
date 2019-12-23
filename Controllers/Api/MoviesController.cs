@@ -7,6 +7,7 @@ using System.Web.Http;
 using PVO.Dtos;
 using PVO.Models;
 using AutoMapper;
+using System.Data.Entity;
 
 namespace PVO.Controllers.Api
 {
@@ -20,9 +21,11 @@ namespace PVO.Controllers.Api
         }
 
         // Get /api/movies
-        public IEnumerable<MovieDto> GetMovies()
+        public IHttpActionResult GetMovies()
         {
-            return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            var MovieDto = _context.Movies.Include(m => m.Genre).ToList().Select(Mapper.Map<Movie, MovieDto>);
+
+            return Ok(MovieDto);
         }
 
         // GET /api/movies/1
