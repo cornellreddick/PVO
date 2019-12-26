@@ -202,6 +202,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
+    <Compile Include="Controllers\Api\NewRentalsController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -210,6 +211,7 @@
     <Compile Include="Dtos\GenreTypeDto.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
+    <Compile Include="Dtos\NewRentalDto.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -265,6 +267,14 @@
     <Compile Include="Migrations\201912261340252_AddPhoneToApllicationUser.cs" />
     <Compile Include="Migrations\201912261340252_AddPhoneToApllicationUser.Designer.cs">
       <DependentUpon>201912261340252_AddPhoneToApllicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912261649010_AddRentalToDB.cs" />
+    <Compile Include="Migrations\201912261649010_AddRentalToDB.Designer.cs">
+      <DependentUpon>201912261649010_AddRentalToDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912261650143_AddNumbersAvailableToDB.cs" />
+    <Compile Include="Migrations\201912261650143_AddNumbersAvailableToDB.Designer.cs">
+      <DependentUpon>201912261650143_AddNumbersAvailableToDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -613,6 +623,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912261340252_AddPhoneToApllicationUser.resx">
       <DependentUpon>201912261340252_AddPhoneToApllicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912261649010_AddRentalToDB.resx">
+      <DependentUpon>201912261649010_AddRentalToDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912261650143_AddNumbersAvailableToDB.resx">
+      <DependentUpon>201912261650143_AddNumbersAvailableToDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
