@@ -13,7 +13,12 @@ namespace PVO.Models
         [Display(Name = "Driving License")]
         public string DrivingLicense { get; set; }
 
-       
+        [Required]
+        [StringLength(50, ErrorMessage = "Phone number can not exceed 50 characters.")]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+
     }
 
     public class ExternalLoginListViewModel

@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Caching;
 using System.Web.Mvc;
 using PVO.Models;
 using PVO.ViewModels;
@@ -64,10 +65,15 @@ namespace PVO.Controllers
         public ViewResult Index()
         {
 
-//            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
+            //Cache 
+//            if (MemoryCache.Default["Genres"] == null)
 //            {
-                return View();//took out customers
-            //};
+//                MemoryCache.Default["Genres"] = _context.Genres.ToList();
+//            }
+//
+//            var genres = MemoryCache.Default["Genres"] as IEnumerable<Genre>;
+
+            return View();
             
         }
 
