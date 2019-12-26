@@ -54,9 +54,9 @@ namespace PVO
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+//            app.UseFacebookAuthentication(
+//               appId: "486594845307293",
+//               appSecret: "");705968
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
