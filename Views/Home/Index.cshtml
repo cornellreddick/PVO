@@ -2,30 +2,104 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!-- Page Content -->
+<div class="container">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="row">
+        <div class="col-md-8 mb-5">
+            <h2><strong>PVO</strong></h2>
+            <hr>
+            <p>I built this web application for movie rentals to improve on my skills as a Software Developer using ASP.NET MVC 5. I learned how to do the following which is provided in the list below.</p>
+            <ul>
+                <li>Implemented CRUD operation</li>
+                <li>Build forms with validation</li>
+                <li>Build RESTful services using ASP.NET Web API</li>
+                <li>Used Entity Framework code-first workflow to build a model</li>
+                <li>Implemented security, authentication and authorization using ASP.NET Identity</li>
+                <li>Used powerful jQuery plugins</li>
+                <li>Optimized application's performance </li>
+                <li>Build and deploy your applications</li>
+                <li>Build forms with validation</li>
+                <li>Created and customize build configurations</li>
+                <li>Use Entity Framework code-first workflow to build a model</li>
+                <li>Managed client / server dependencies</li>
+                <li>Use powerful jQuery plugins</li>
+                <li>Tested APIs using PostMan</li>
+                <li>Used AutoMapper</li>
+            </ul>
+           
+        </div>
+        <div class="col-md-4 mb-5">
+            <h2><strong>Contact Me</strong></h2>
+            <hr>
+            <address>
+                <strong>Cornell Reddick</strong><br /> Software Developer
+                <br/>
+                <abbr title="Phone">Phone:</abbr>
+                (312) 833-5262
+                <br>
+                <abbr title="Email">Email:</abbr>
+                <a href="mailto:#">cornellreddick@gmail.com</a>
+                <br/>
+                <abbr title="Portfolio">Portfolio:</abbr>
+                <a href="http://creddickportfolio.com/">cornellreddickportfolio.com</a>
+                <br/>
+                <abbr title="Linkedin">Linkedin:</abbr>
+                <a href="www.linkedin.com/in/cornellreddick">Linkedin</a>
+            </address>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <!-- /.row -->
+
+    <div class="row">
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3><strong class="card-title">CRUD Operation</strong></h3>
+                    <p class="card-text">I implemented CRUD operations in the Customer and Movie Domain using Entity Frame Work Code first approach. Click the link below to see what I've done or use the navbar above. </p>
+                </div>
+                <div class="card-footer">
+                    @Html.ActionLink("Customer", "Index", "Customer", null, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Movie", "Index", "Movie", null, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3><strong class="card-title">jQuery Plugins</strong></h3>
+                    <p class="card-text">I used the following jQuery plugins in my application: </p>
+                    <ul>
+                        <li><a href="https://datatables.net/">DataTables</a></li>
+                        <li><a href="https://jqueryui.com/autocomplete/">AutoComplete</a></li>
+                        <li><a href="https://api.jquery.com/jquery.ajax/">Ajax</a></li>
+                        <li><a href="https://api.jquery.com/jquery.ajax/">bootbox</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        
+
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3><strong class="card-title">Security Implementation</strong></h3>
+                    <p class="card-text"> Restricted access to specific Users for view and delete rights using the IdentityUser and IdentityRole Domain by assigning specific User Role. I added the Authorize attribute to limit unauthorized Users from viewing data without logging into an valid account.
+                        I applied Anti-forgery Tokens to protect against Cross-site Request Forgery (CSRF). </p>
+                </div>
+                
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+    <!-- /.row -->
+
 </div>
+<!-- /.container -->
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Developed by Cornell Reddick 2019</p>
+    </div>
+    <!-- /.container -->
+</footer>

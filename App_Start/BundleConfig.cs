@@ -28,6 +28,7 @@ namespace PVO
 
                                 bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-luman.css",
+                      "~/Content/bootstrap-theme1.css",
                       "~/Content/dataTables/css/dataTables.bootstrap.css",
                       "~/Content/typeahead.css",
                       "~/Content/toastr.css",

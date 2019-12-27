@@ -20,25 +20,21 @@ namespace PVO.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
-        // Get /api/customers
+        // GET /api/customers
         public IHttpActionResult GetCustomers(string query = null)
         {
             var customersQuery = _context.Customers
                 .Include(c => c.MembershipType);
-            //This is used to filter only single names in the form. 
+
             if (!String.IsNullOrWhiteSpace(query))
-            {
                 customersQuery = customersQuery.Where(c => c.Name.Contains(query));
-            }
 
             var customerDtos = customersQuery
                 .ToList()
                 .Select(Mapper.Map<Customer, CustomerDto>);
 
             return Ok(customerDtos);
-
         }
-
 
         // GET /api/customers/1
         public IHttpActionResult GetCustomer(int id)
@@ -63,16 +59,14 @@ namespace PVO.Controllers.Api
             _context.SaveChanges();
 
             customerDto.Id = customer.Id;
-
-            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto );
-
+            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
         }
 
         // PUT /api/customers/1
         [HttpPut]
         public IHttpActionResult UpdateCustomer(int id, CustomerDto customerDto)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest();
 
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
@@ -81,7 +75,9 @@ namespace PVO.Controllers.Api
                 return NotFound();
 
             Mapper.Map(customerDto, customerInDb);
+
             _context.SaveChanges();
+
             return Ok();
         }
 
