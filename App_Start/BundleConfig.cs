@@ -15,7 +15,8 @@ namespace PVO
                         "~/Scripts/respond.js",
                         "~/Scripts/dataTables/jquery.dataTables.js",
                         "~/Scripts/dataTables/dataTables.bootstrap.js",
-                        "~/Scripts/typeahead.bundle.js"));
+                        "~/Scripts/typeahead.bundle.js",
+                        "~/Scripts/toastr.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -29,6 +30,7 @@ namespace PVO
                       "~/Content/bootstrap-luman.css",
                       "~/Content/dataTables/css/dataTables.bootstrap.css",
                       "~/Content/typeahead.css",
+                      "~/Content/toastr.css",
                       "~/Content/site.css"));
         }
     }
